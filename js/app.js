@@ -59,6 +59,28 @@ function collectionTest() {
 	console.log("obj.cid = "+ obj.cid + " obj2.cid = "+ obj2.cid);
 	console.log("objs.get(cid): " + JSON.stringify(objs.get("c5")));
 	console.log("objs.at(index): " + JSON.stringify(objs.at(0)));
+
+	// add
+	objs.add(new Backbone.Model({name: "Acroquest", age: 20}));
+	objs.add(new Backbone.Model({name: "Technology", age: 10}));
+
+	console.log("objs.lengh: "+ objs.length);
+	console.log("objs: "+ JSON.stringify(objs));
+
+	// for sort function
+	objs.comparator = function(item) {
+		return item.get("age");
+	};
+
+	objs.sort();
+	console.log("After sort objs: " + JSON.stringify(objs));
+	console.log("After sort objs.at(index): " + JSON.stringify(objs.at(0)));
+
+	// remove
+	objs.remove(obj2);
+	console.log("objs.lengh: " + objs.length );
+	console.log("objs: " + JSON.stringify(objs));
+
 	console.log("========= collectionTest end =========");	
 }
 

@@ -82,6 +82,47 @@ function collectionTest() {
 	console.log("objs.lengh: " + objs.length );
 	console.log("objs: " + JSON.stringify(objs));
 
+	// each
+	objs.each(function(item, index) {
+		console.log("each(" + index + "): " + JSON.stringify(item));
+	});
+
+	// find
+	var tmpObj = objs.find(function(item) {
+		return item.get("age") === 20;
+	});
+	console.log("find result: " + JSON.stringify(tmpObj));
+
+	// filter
+	tmpObj = objs.filter(function(item) {
+		return item.get("age") === 20;
+	});
+	console.log("filter result: " + JSON.stringify(tmpObj));
+
+	//where
+	tmpObj = objs.where({age: 20});
+	console.log("where result: " + JSON.stringify(tmpObj));
+
+	//max
+	tmpObj = objs.max(function(item) {
+		return item.get("age");
+	});
+	console.log("max result: " + JSON.stringify(tmpObj));
+
+	// map
+	tmpObj = objs.map(function(item) {
+		return item.get("age") + 1;
+	});
+	console.log("map result: " + JSON.stringify(tmpObj));
+
+	// reduce
+	tmpObj = objs.reduce(function(memo, item) {
+		return memo + item.get("age");
+	}, 0);
+	console.log("reduce result: " + JSON.stringify(tmpObj));
+
+	// pluck
+	console.log("pluck result: " + JSON.stringify(objs.pluck("name")));
 	console.log("========= collectionTest end =========");	
 }
 

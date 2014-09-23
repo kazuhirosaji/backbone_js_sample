@@ -3,6 +3,7 @@
 
 	modelTest();
 	extendModelTest();
+	collectionTest();
 
 }())
 
@@ -39,4 +40,25 @@ function extendModelTest() {
 
 	var tmpStaff2 = new Staff({name: "Kenichiro", age: 35, id: 102});
 	console.log("========= extendModelTest end =========");
+
 }
+
+function collectionTest() {
+	var obj = new Backbone.Model();
+
+	obj.set({name: "Murata"});
+	obj.set({age: 20});
+
+	var obj2 = new Backbone.Model({name: "Kenichiro", age: 30});
+
+
+	console.log("========= collectionTest start =========");
+
+	var objs = new Backbone.Collection([obj, obj2]);
+	console.log("objs: " + JSON.stringify(objs));
+	console.log("obj.cid = "+ obj.cid + " obj2.cid = "+ obj2.cid);
+	console.log("objs.get(cid): " + JSON.stringify(objs.get("c5")));
+	console.log("objs.at(index): " + JSON.stringify(objs.at(0)));
+	console.log("========= collectionTest end =========");	
+}
+
